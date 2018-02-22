@@ -24,6 +24,7 @@ public class DFSSolver extends Solver {
 			addChildren(node);
 			PuzzleStateNode child = node.getUnvisitedChildNode();
 			if(child != null) {
+				child.setVisited(true);
 				stack.push(child);
 			} else {
 				stack.pop();
