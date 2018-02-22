@@ -29,7 +29,7 @@ public class GameRunner {
 		System.out.println("\n");
 		// DFS:
 		puzzleSize = 4;
-		randomMoves = 1;
+		randomMoves = 5;
 		rootNode = PuzzleGenerator.generatePuzzle(puzzleSize, randomMoves);
 		DFSSolver dfsSolver = new DFSSolver(puzzleSize);
 		System.out.println("DFS - " + puzzleSize + " * " + puzzleSize + " Puzzle with "  + randomMoves + " random moves: ");

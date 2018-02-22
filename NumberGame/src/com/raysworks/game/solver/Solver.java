@@ -53,9 +53,9 @@ public abstract class Solver {
 				childNode.setVisited(true);
 			} else {
 				traversalledStateSet.add(childNode.getPuzzleList());
+				childNode.setParent(node);
 			}
 			node.addChild(childNode);
-			childNode.setParent(node);
 		}
 	}
 }
