@@ -15,10 +15,12 @@ public class DFSSolver extends Solver {
 		Stack<PuzzleStateNode> stack = new Stack<>();
 		stack.push(rootNode);
 		while(!stack.isEmpty()) {
+			super.tracker.addNodesIterateCount();
 			PuzzleStateNode node = stack.peek();
 			node.setVisited(true);
 			if (super.isSolved(node)) {
-				System.out.println("DFS found solution!");
+				retriveNodesPath(node);
+				System.out.println("DFS found solution! " + super.tracker);
 				return;
 			}
 			addChildren(node);

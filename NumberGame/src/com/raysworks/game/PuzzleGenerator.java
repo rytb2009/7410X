@@ -1,6 +1,8 @@
 package com.raysworks.game;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -8,7 +10,7 @@ import com.raysworks.game.entity.BlankGridMoveDirection;
 import com.raysworks.game.entity.PuzzleStateNode;
 
 public class PuzzleGenerator {
-
+	
 	public static PuzzleStateNode generatePuzzle(int puzzleSize, int randomMoves) {
 		int totalNumbers = puzzleSize * puzzleSize;
 		List<Integer> sortedList = IntStream.rangeClosed(1, totalNumbers).boxed().collect(Collectors.toList());
@@ -17,11 +19,15 @@ public class PuzzleGenerator {
 		rootNode.setBlankGridIndex(totalNumbers - 1);
 		int moveCount = 0;
 		PuzzleStateNode puzzleNode = rootNode;
+		Set<List<Integer>> generatedPuzzle = new HashSet<>();
+		generatedPuzzle.add(sortedList);
 		while (moveCount < randomMoves) {
 			puzzleNode = randomMove(puzzleNode, puzzleSize);
-			if (!sortedList.equals(puzzleNode.getPuzzleList())) {
-				moveCount++;				
-			}	
+			if (generatedPuzzle.contains(puzzleNode.getPuzzleList())) {
+				continue;
+			}
+			generatedPuzzle.add(puzzleNode.getPuzzleList());
+			moveCount++;	
 		}
 		return puzzleNode; 
 	}	

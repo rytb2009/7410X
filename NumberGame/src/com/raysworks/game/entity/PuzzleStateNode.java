@@ -3,7 +3,7 @@ package com.raysworks.game.entity;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PuzzleStateNode {
+public class PuzzleStateNode implements INode {
 	private List<PuzzleStateNode> children = new LinkedList<>();
 	private PuzzleStateNode parent;
 	private BlankGridMoveDirection direction;

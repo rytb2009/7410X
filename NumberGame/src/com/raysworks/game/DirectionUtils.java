@@ -1,5 +1,6 @@
 package com.raysworks.game;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -69,6 +70,27 @@ public class DirectionUtils {
 		nextNode.setBlankGridIndex(moveToIndex);
 		nextNode.setPuzzleList(newPuzzleList);
 		return nextNode;
+	}
+	
+	public static int getManhattanceDistance(int puzzleSize, int currentPosition, int targetPosition) {
+		if (targetPosition == currentPosition) {
+			return 0;
+		}
+		Point targetPoint = new Point();
+		Point currentPoint = new Point();
+		for (int i = 0; i < puzzleSize; i++) {
+			for (int j = 0; j < puzzleSize; j++) {
+				if (targetPosition == (i * puzzleSize + j)) {
+					targetPoint.x = i;
+					targetPoint.y = j;
+				}
+				if (currentPosition == (i * puzzleSize + j)) {
+					currentPoint.x = i;
+					currentPoint.y = j;
+				}
+			}
+		}
+		return Math.abs(currentPoint.x-targetPoint.x) + Math.abs(currentPoint.y-targetPoint.y);
 	}
 
 }

@@ -26,8 +26,10 @@ public class IDDFSSolver extends Solver {
 	
 	private void depthFirstSearch(PuzzleStateNode node, int maxDepth) {
 		node.setVisited(true);
+		super.tracker.addNodesIterateCount();
 		if (super.isSolved(node)) {
-			System.out.println("IDDFS found solution !");
+			retriveNodesPath(node);
+			System.out.println("IDDFS found solution !" + super.tracker);
 			isSolved = true;
 			return;
 		}
