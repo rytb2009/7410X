@@ -11,20 +11,22 @@ public class GameRunner {
 
 	public static void main(String[] args) {
 		int puzzleSize = 4;
-		int randomMoves = 50;
-		// BFS:
+		int randomMoves = 20;
 		PuzzleStateNode rootNode = PuzzleGenerator.generatePuzzle(puzzleSize, randomMoves);
+		//A *
+		System.out.println("A Star - " + puzzleSize + " * " + puzzleSize + " Puzzle with " + randomMoves + " random moves: ");
+		printPuzzle(rootNode.getPuzzleList());
+		AStarSolver aPlusSolver = new AStarSolver(puzzleSize);
+		runSolver(aPlusSolver, rootNode);
+		System.out.println("\n");
+
+		// BFS:
 		System.out.println("BFS - " + puzzleSize + " * " + puzzleSize + " Puzzle with " + randomMoves + " random moves: ");
 		printPuzzle(rootNode.getPuzzleList());
 		BFSSolver bfsSolver = new BFSSolver(puzzleSize);
 		runSolver(bfsSolver, rootNode);
 		System.out.println("\n");
 		
-		System.out.println("A Star - " + puzzleSize + " * " + puzzleSize + " Puzzle with " + randomMoves + " random moves: ");
-		printPuzzle(rootNode.getPuzzleList());
-		AStarSolver aPlusSolver = new AStarSolver(puzzleSize);
-		runSolver(aPlusSolver, rootNode);
-		System.out.println("\n");
 ////		// IDDFS:
 //		
 //		System.out.println("IDDFS - " + puzzleSize + " * " + puzzleSize + " Puzzle with " + randomMoves + " random moves: ");

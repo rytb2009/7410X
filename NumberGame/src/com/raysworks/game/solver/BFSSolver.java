@@ -20,13 +20,13 @@ public class BFSSolver extends Solver {
 			PuzzleStateNode node = queue.remove();
 			if (super.isSolved(node)) {
 				retriveNodesPath(node);
-				System.out.println("BFS found solution!" + super.tracker);
+				System.out.println("BFS found solution!\n" + super.tracker);
 				return;
 			}
 			addChildren(node);
 //			System.out.println(node);
 			PuzzleStateNode child= null;
-			while((child = node.getUnvisitedChildNode())!=null) {
+			while((child = node.getUnvisitedChildNode()) != null) {
 				super.tracker.addNodesIterateCount();
 				child.setVisited(true);
 				queue.add(child);

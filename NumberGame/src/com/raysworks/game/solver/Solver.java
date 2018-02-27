@@ -38,7 +38,6 @@ public abstract class Solver {
 	}
 	
 	protected void retriveNodesPath(PuzzleStateNode goalNode) {
-		tracker.addTreeDepth();
 		resultNodesList.add(goalNode);
 		PuzzleStateNode parent = goalNode.getParent();
 		if (parent != null && parent.getDirection() != null) {
